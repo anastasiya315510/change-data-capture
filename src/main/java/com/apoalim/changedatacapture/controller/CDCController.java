@@ -26,8 +26,10 @@ public class CDCController {
         if(record.getHeaders().getOperation().equals(EventOperation.DELETE)){
             return KafkaRecord.builder().build();
         }
-      return   KafkaRecord.builder().pk(record.getPk()).data(LocalDateTime.now()).beforeData(record.getData())
-                .headers(HeaderKafkaRecord.builder()
+      return   KafkaRecord.builder().pk(record.getPk())
+              .beforeData(record.getData())
+              .data(LocalDateTime.now())
+              .headers(HeaderKafkaRecord.builder()
                         .operation(record.getHeaders().getOperation())
                         .streamPosition(record.getHeaders().getStreamPosition())
                         .timestamp(record.getHeaders().getTimestamp())

@@ -11,12 +11,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class HeaderKafkaRecord {
+public class HeaderKafkaRecord implements Serializable {
     private EventOperation operation;
     private LocalDateTime timestamp;
     private String streamPosition;

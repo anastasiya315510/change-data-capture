@@ -7,7 +7,9 @@ package com.apoalim.changedatacapture.model;
 
 import lombok.RequiredArgsConstructor;
 
+import java.io.Serializable;
+
 @RequiredArgsConstructor
-public enum EventOperation {
+public enum EventOperation implements Serializable {
     INSERT, UPDATE, DELETE
 }

@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.ArrayList;
+import java.util.List;
+
 
 
 @Service
@@ -23,12 +25,11 @@ public class KafkaProducer {
      @Autowired
     private KafkaTemplate<String, KafkaRecord> kafkaTemplate;
 
-     public void writeMessage(CopyOnWriteArrayList<KafkaRecord>list){
+     public void writeMessage(List<KafkaRecord> list){
          list.forEach(el->{
              this.kafkaTemplate.send(TOPIC_OUTPUT, el);
-             log.info(String.format("record create -> %s", list.remove(el)));
+         log.info(String.format("record create -> %s", el));
          });
-
 
      }
 }
